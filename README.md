@@ -111,48 +111,6 @@ A simple **Library Management System** built with **Node.js**, **Express.js**, *
 
 ---
 
-## Add Member
-
-<img src="./upload/members_add.png" width="900">
-
----
-
-## Member Added Successfully
-
-<img src="./upload/Member_added_successfully.png" width="900">
-
----
-
-## View All Members
-
-<img src="./upload/view_all_member.png" width="900">
-
----
-
-## Search Members
-
-<img src="./upload/members_search.png" width="900">
-
----
-
-## Update Member
-
-<img src="./upload/members_update.png" width="900">
-
----
-
-## Member Updated Successfully
-
-<img src="./upload/Member_updated_successfully.png" width="900">
-
----
-
-## Member Deleted Successfully
-
-<img src="./upload/Member_deleted_successfully.png" width="900">
-
----
-
 # 🛠️ Tech Stack
 
 | Technology      | Purpose                       |

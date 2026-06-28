@@ -1,349 +1,318 @@
 # 📚 Library Management System
 
-A simple **Library Management System** built with **Node.js**, **Express.js**, **MongoDB**, and **EJS** following the **MVC architecture**. Supports book cover image uploads via **Multer** and a responsive UI with **Bootstrap 5**.
+A simple **Library Management System** built with **Node.js**, **Express.js**, **MongoDB**, and **EJS** following the **MVC architecture**. The application allows librarians to manage books and members efficiently. It supports **book cover image uploads** using **Multer** and provides a responsive user interface with **Bootstrap 5**.
 
 ---
 
-## 🖥️ Screenshots
+# ✨ Features
 
-| Dashboard | Books | Members |
-|-----------|-------|---------|
-| Total books & members stats | Add, edit, delete, search books | Add, edit, delete, search members |
-
----
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| Node.js | Runtime environment |
-| Express.js | Web framework |
-| MongoDB | Database |
-| Mongoose | MongoDB object modeling |
-| EJS | Templating engine (Views) |
-| Bootstrap 5 | Responsive UI |
-| Multer | File/image upload |
-| Method-Override | PUT & DELETE from HTML forms |
-| Nodemon | Auto-restart during development |
+* 📚 Add, View, Edit, Delete Books
+* 👥 Add, View, Edit, Delete Members
+* 🔍 Search Books by Title
+* 🔍 Search Members by Name
+* 🖼️ Upload Book Cover Images
+* 📊 Dashboard with Library Statistics
+* 📱 Responsive Bootstrap 5 Interface
+* 🏗️ MVC Project Structure
 
 ---
 
-## 📁 Folder Structure
+## 📸 Screenshots
 
-```
+> Place all screenshots inside the **`uploads/`** folder in your project root.
+
+### Dashboard
+
+<img src="./uploads/dashboard.png" width="900">
+
+---
+
+### Add Book
+
+<img src="./uploads/books_add.png" width="900">
+
+---
+
+### Book Added Successfully
+
+<img src="./uploads/Book_added_successfully.png" width="900">
+
+---
+
+### View All Books
+
+<img src="./uploads/view_all_books.png" width="900">
+
+---
+
+### Search Books
+
+<img src="./uploads/books_search.png" width="900">
+
+---
+
+### Update Book
+
+<img src="./uploads/books_update.png" width="900">
+
+---
+
+### Book Updated Successfully
+
+<img src="./uploads/Book_updated_successfully.png" width="900">
+
+---
+
+### Book Deleted Successfully
+
+<img src="./uploads/Book_deleted_successfully.png" width="900">
+
+---
+
+### Add Member
+
+<img src="./uploads/members_add.png" width="900">
+
+---
+
+### Member Added Successfully
+
+<img src="./uploads/Member_added_successfully.png" width="900">
+
+---
+
+### View All Members
+
+<img src="./uploads/view_all_member.png" width="900">
+
+---
+
+### Search Members
+
+<img src="./uploads/members_search.png" width="900">
+
+---
+
+### Update Member
+
+<img src="./uploads/members_update.png" width="900">
+
+---
+
+### Member Updated Successfully
+
+<img src="./uploads/Member_updated_successfully.png" width="900">
+
+---
+
+### Member Deleted Successfully
+
+<img src="./uploads/Member_deleted_successfully.png" width="900">
+
+---
+
+## Add Member
+
+<img src="./upload/members_add.png" width="900">
+
+---
+
+## Member Added Successfully
+
+<img src="./upload/Member_added_successfully.png" width="900">
+
+---
+
+## View All Members
+
+<img src="./upload/view_all_member.png" width="900">
+
+---
+
+## Search Members
+
+<img src="./upload/members_search.png" width="900">
+
+---
+
+## Update Member
+
+<img src="./upload/members_update.png" width="900">
+
+---
+
+## Member Updated Successfully
+
+<img src="./upload/Member_updated_successfully.png" width="900">
+
+---
+
+## Member Deleted Successfully
+
+<img src="./upload/Member_deleted_successfully.png" width="900">
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology      | Purpose                       |
+| --------------- | ----------------------------- |
+| Node.js         | Runtime Environment           |
+| Express.js      | Web Framework                 |
+| MongoDB         | Database                      |
+| Mongoose        | MongoDB ODM                   |
+| EJS             | View Engine                   |
+| Bootstrap 5     | Responsive UI                 |
+| Multer          | Image Upload                  |
+| Method-Override | Support PUT & DELETE Requests |
+| Nodemon         | Development Server            |
+
+---
+
+# 📁 Folder Structure
+
+```text
 library-management/
-├── app.js                        ← Entry point, server setup
-├── db.js                         ← MongoDB connection
-├── package.json                  ← Project dependencies
-├── uploads/                      ← Uploaded book cover images (auto-created)
-│   └── (images stored here)
-├── public/                       ← Static assets
-│   ├── css/
-│   │   └── style.css             ← Custom styles
-│   ├── js/                       ← Custom scripts
-│   └── images/                   ← Static images
+├── app.js
+├── db.js
+├── package.json
+├── upload/
+│   ├── dashboard.png
+│   ├── books_add.png
+│   ├── Book_added_successfully.png
+│   ├── view_all_books.png
+│   ├── books_search.png
+│   ├── books_update.png
+│   ├── Book_updated_successfully.png
+│   ├── Book_deleted_successfully.png
+│   ├── members_add.png
+│   ├── Member_added_successfully.png
+│   ├── view_all_member.png
+│   ├── members_search.png
+│   ├── members_update.png
+│   ├── Member_updated_successfully.png
+│   └── Member_deleted_successfully.png
+├── uploads/
+├── public/
 ├── Controller/
-│   ├── bookController.js         ← Book CRUD + Search + Image Upload logic
-│   ├── memberController.js       ← Member CRUD + Search logic
-│   └── dashboardController.js    ← Dashboard stats (total books, members)
 ├── Middleware/
-│   └── upload.js                 ← Multer config for image uploads
 ├── Model/
-│   ├── Book.js                   ← Book schema (title, author, isbn, coverImage...)
-│   └── Member.js                 ← Member schema (name, email, mobile, address...)
 ├── Routes/
-│   ├── bookRoutes.js             ← /books routes + upload middleware
-│   ├── memberRoutes.js           ← /members routes
-│   └── dashboardRoutes.js        ← / (home/dashboard) route
 ├── Views/
-│   ├── dashboard.ejs             ← Home page with stats
-│   ├── partials/
-│   │   ├── header.ejs            ← Navbar + Bootstrap CDN links
-│   │   └── footer.ejs            ← Bootstrap JS + closing tags
-│   ├── books/
-│   │   ├── index.ejs             ← View all books + search
-│   │   ├── add.ejs               ← Add book form with image upload
-│   │   ├── edit.ejs              ← Edit book form with image preview
-│   │   └── details.ejs           ← Single book detail page (optional)
-│   └── members/
-│       ├── index.ejs             ← View all members + search
-│       ├── add.ejs               ← Add member form
-│       └── edit.ejs              ← Edit member form
 └── README.md
 ```
 
 ---
 
-## ⚙️ Prerequisites
+# ⚙️ Prerequisites
 
-Make sure the following are installed on your machine:
+Install the following software before running the project:
 
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- [MongoDB](https://www.mongodb.com/try/download/community) (Community Server)
-- [VS Code](https://code.visualstudio.com/)
+* Node.js (v16 or later)
+* MongoDB Community Server
+* Visual Studio Code
 
 ---
 
-## 🚀 How to Run (Step by Step)
+# 🚀 Installation
 
-### Step 1 — Clone or Download the Project
-
-Download and unzip the project, or clone it:
+### Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/your-username/library-management.git
+```
+
+### Move into the project directory
+
+```bash
 cd library-management
 ```
 
-### Step 2 — Open in VS Code
-
-```
-File → Open Folder → select the library-management folder
-```
-
-### Step 3 — Install Dependencies
-
-Open the VS Code terminal (`Ctrl + ~`) and run:
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-### Step 4 — Start MongoDB
+### Start MongoDB
 
-Open a **separate terminal** and start MongoDB:
+**Windows**
 
 ```bash
-# Windows
 mongod
+```
 
-# Mac / Linux
+**Linux / macOS**
+
+```bash
 sudo systemctl start mongod
 ```
 
-> MongoDB will create a database called `libraryDB` automatically on first run.
-
-### Step 5 — Start the Server
-
-Back in VS Code terminal:
+### Run the application
 
 ```bash
 npm run dev
 ```
 
-You should see:
+Open your browser and visit:
 
 ```
-Server is running on http://localhost:4000
-MongoDB Connected to libraryDB
+http://localhost:4000
 ```
-
-### Step 6 — Open in Browser
-
-Go to → **http://localhost:4000**
 
 ---
 
-## 📌 Available Routes
+# 📌 Available Routes
 
-### Dashboard
-| URL | Description |
-|-----|-------------|
-| `GET /` | Dashboard — total books & members |
+## Dashboard
+
+| Method | Route | Description |
+| ------ | ----- | ----------- |
+| GET    | /     | Dashboard   |
 
 ### Books
-| Method | URL | Description |
-|--------|-----|-------------|
-| GET | `/books` | View all books (+ search by title) |
-| GET | `/books/add` | Add new book form |
-| POST | `/books/add` | Submit new book |
-| GET | `/books/edit/:id` | Edit book form |
-| PUT | `/books/edit/:id` | Update book |
-| DELETE | `/books/delete/:id` | Delete book |
+
+| Method | Route             | Description    |
+| ------ | ----------------- | -------------- |
+| GET    | /books            | View all books |
+| GET    | /books/add        | Add book form  |
+| POST   | /books/add        | Save book      |
+| GET    | /books/edit/:id   | Edit book form |
+| PUT    | /books/edit/:id   | Update book    |
+| DELETE | /books/delete/:id | Delete book    |
 
 ### Members
-| Method | URL | Description |
-|--------|-----|-------------|
-| GET | `/members` | View all members (+ search by name) |
-| GET | `/members/add` | Add new member form |
-| POST | `/members/add` | Submit new member |
-| GET | `/members/edit/:id` | Edit member form |
-| PUT | `/members/edit/:id` | Update member |
-| DELETE | `/members/delete/:id` | Delete member |
+
+| Method | Route               | Description      |
+| ------ | ------------------- | ---------------- |
+| GET    | /members            | View all members |
+| GET    | /members/add        | Add member form  |
+| POST   | /members/add        | Save member      |
+| GET    | /members/edit/:id   | Edit member form |
+| PUT    | /members/edit/:id   | Update member    |
+| DELETE | /members/delete/:id | Delete member    |
 
 ---
 
-## 📦 npm Scripts
+# 📦 npm Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| Start | `npm start` | Run with Node.js |
-| Dev | `npm run dev` | Run with Nodemon (auto-restart) |
-
----
-
-## 🔧 Configuration
-
-The MongoDB connection string is in `db.js`:
-
-```js
-mongoose.connect("mongodb://localhost:27017/libraryDB")
-```
-
-To use a different database name, change `libraryDB` to your preferred name.
+| Command       | Description           |
+| ------------- | --------------------- |
+| `npm start`   | Start the application |
+| `npm run dev` | Start with Nodemon    |
 
 ---
 
-## ✅ Features
+# 🔧 Configuration
 
-- ✔️ Add, View, Edit, Delete Books
-- ✔️ Add, View, Edit, Delete Members
-- ✔️ Search Books by Title
-- ✔️ Search Members by Name
-- ✔️ Book Cover Image Upload (Multer)
-- ✔️ Dashboard with Total Books & Members
-- ✔️ Success & Error Alerts
-- ✔️ Responsive UI with Bootstrap 5
-- ✔️ Proper MVC Architecture
+MongoDB connection (`db.js`):
 
----
-
-## 🖼️ Book Cover Image Upload (Multer)
-
-This section explains how image uploading works end to end.
-
-### How it works
-
-```
-User uploads file  →  Multer saves to uploads/1719500000000.jpg
-                   →  req.file.filename = "1719500000000.jpg"
-                   →  Saved in MongoDB as coverImage: "1719500000000.jpg"
-
-Browser requests   →  GET /uploads/1719500000000.jpg
-                   →  express.static serves file from uploads/ folder
-                   →  Image displays in <img src="/uploads/1719500000000.jpg">
+```javascript
+mongoose.connect("mongodb://localhost:27017/libraryDB");
 ```
 
 ---
 
-### 1. `app.js` — Serve the uploads folder as static
+# 👨‍💻 Author
 
-```js
-app.use('/uploads', express.static('uploads'));
-
-// Auto-create uploads folder if it doesn't exist
-const fs = require('fs');
-if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
-```
-
----
-
-### 2. `Middleware/upload.js` — Multer config
-
-```js
-const multer = require('multer');
-const path = require('path');
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-        // saves as: 1719500000000.jpg
-    }
-});
-
-const upload = multer({ storage: storage });
-
-module.exports = upload;
-```
-
----
-
-### 3. `Model/Book.js` — Add `coverImage` field
-
-```js
-coverImage: {
-    type: String,
-    default: 'default.jpg'   // fallback if no image uploaded
-}
-```
-
----
-
-### 4. `Controller/bookController.js` — Save filename from multer
-
-```js
-const addBook = async (req, res) => {
-    const coverImage = req.file ? req.file.filename : 'default.jpg';
-
-    await Book.create({
-        ...req.body,
-        coverImage   // saves "1719500000000.jpg" to DB
-    });
-    res.redirect('/books?success=Book added successfully');
-};
-```
-
----
-
-### 5. `Routes/bookRoutes.js` — Attach upload middleware
-
-```js
-const upload = require('../Middleware/upload');
-
-router.post('/add', upload.single('coverImage'), addBook);
-router.put('/edit/:id', upload.single('coverImage'), updateBook);
-```
-
----
-
-### 6. `Views/books/add.ejs` — Form must have `enctype`
-
-```html
-<form action="/books/add" method="POST" enctype="multipart/form-data">
-    ...
-    <input type="file" name="coverImage" class="form-control" accept="image/*">
-    ...
-</form>
-```
-
----
-
-### 7. `Views/books/index.ejs` — Display the image
-
-```html
-<img src="/uploads/<%= book.coverImage %>"
-     alt="<%= book.title %>"
-     width="60" height="80"
-     style="object-fit: cover; border-radius: 4px;"
-     onerror="this.src='/uploads/default.jpg'">
-```
-
----
-
-### 8. `Views/books/edit.ejs` — Show current image + allow replace
-
-```html
-<!-- Show current image -->
-<% if (book.coverImage) { %>
-    <img src="/uploads/<%= book.coverImage %>"
-         alt="Current Cover"
-         width="80" height="100"
-         style="object-fit: cover; border-radius: 6px;">
-    <p class="text-muted small mt-1">Current cover image</p>
-<% } %>
-
-<!-- Upload new image (optional) -->
-<input type="file" name="coverImage" class="form-control" accept="image/*">
-<small class="text-muted">Leave empty to keep current image</small>
-```
-
-> **Image src pattern:** `/uploads/<%= book.coverImage %>` — this is the path used in every EJS view to display a book's cover image.
-
----
-
-## 👨‍💻 Author
-
-Built as a project using Node.js MVC architecture.
+Developed as a **Library Management System** project using **Node.js**, **Express.js**, **MongoDB**, **EJS**, **Bootstrap 5**, and **Multer** following the **MVC architecture**.

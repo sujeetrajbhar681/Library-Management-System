@@ -1,0 +1,119 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h3 class="fw-bold"><i class="bi bi-speedometer2 me-2 text-primary"></i>Dashboard</h3>
+            <p class="text-muted">Welcome to the Library Management System</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card stat-card books shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1 small">Total Books</p>
+                        <h2 class="fw-bold text-primary mb-0"><%= totalBooks %></h2>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 rounded p-3">
+                        <i class="bi bi-journals text-primary fs-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card stat-card members shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1 small">Total Members</p>
+                        <h2 class="fw-bold text-success mb-0"><%= totalMembers %></h2>
+                    </div>
+                    <div class="bg-success bg-opacity-10 rounded p-3">
+                        <i class="bi bi-people text-success fs-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Data Tables -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                    <h6 class="mb-0 fw-bold"><i class="bi bi-journals me-2 text-primary"></i>Recent Books</h6>
+                    <a href="/books" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="card-body p-0">
+                    <% if (recentBooks.length === 0) { %>
+                        <p class="text-center text-muted p-4">No books added yet.</p>
+                    <% } else { %>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% recentBooks.forEach(book => { %>
+                                <tr>
+                                    <td><%= book.title %></td>
+                                    <td class="text-muted"><%= book.author %></td>
+                                    <td>
+                                        <span class="badge <%= book.availableCopies > 0 ? 'bg-success' : 'bg-danger' %>">
+                                            <%= book.availableCopies %>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                    <h6 class="mb-0 fw-bold"><i class="bi bi-people me-2 text-success"></i>Recent Members</h6>
+                    <a href="/members" class="btn btn-sm btn-outline-success">View All</a>
+                </div>
+                <div class="card-body p-0">
+                    <% if (recentMembers.length === 0) { %>
+                        <p class="text-center text-muted p-4">No members added yet.</p>
+                    <% } else { %>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% recentMembers.forEach(member => { %>
+                                <tr>
+                                    <td><%= member.name %></td>
+                                    <td class="text-muted small"><%= member.email %></td>
+                                    <td><%= member.mobile %></td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
